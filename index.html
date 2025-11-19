@@ -16,8 +16,8 @@
   </head>
   <body>
     <!-- NavBar -->
-    <nav id="navBar" class="navbar d-flex navbar-expand-lg bg-body-tertiary">
-    <!-- Logo and title -->
+    <nav id="nav-bar" class="navbar d-flex navbar-expand-lg bg-body-tertiary">
+      <!-- Logo and title -->
       <div class="container-fluid d-flex align-items-center">
         <a class="navbar-brand me-auto" href="#">
           <img
@@ -42,7 +42,7 @@
               Search
             </button>
           </form>
-        <!-- Collapsed menu on small screens -->
+          <!-- Collapsed menu on small screens -->
         </div>
         <button
           class="navbar-toggler"
@@ -79,11 +79,51 @@
       </div>
     </nav>
     <!-- Card area for quick workouts progress and user login -->
-    <!-- Import BOOTSTRAP JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <main>
+      <div id="card-box" class=" p-3 mt-2 container text-center">
+        <div class="row">
+          <!-- Card 1 for workouts -->
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://imgs.search.brave.com/yHQ0gDKeFUC8UIwNnLPpca1EtQ4qeCw_-x92x_ImlTg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL2sv/a3VyaGFuL20vOTgv/NzU3MzgzMV9zdG9j/ay1waG90by1kdW1i/YmVsbC1iaWNlcHMt/d29ya291dC5qcGc" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  Click this to bring you a quick workout session!
+                </p>
+                <a href="#" class="btn btn-success">Lets Workout!</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 for Progress -->
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://imgs.search.brave.com/bQpCzeNyjC2Tpui55ZEWSFJkh0l2fyE0svQOtIkx4-Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL20v/bWlsYW5tYXJrb3Zp/Yzc4L20vMjMvODYx/NDEwM19zdG9jay1w/aG90by1jcm9zc2Zp/dC13b3Jrb3V0Lmpw/Zw" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Click here to see your Progress!</p>
+                <a href="#" class="btn btn-success">Check Progress</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 for User log in / creation -->
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://imgs.search.brave.com/oqZxULyrnP5_tbGRsOt9uR8V1X5p0mcLYmJ80dJ0Slw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vaW1hZ2Vz/L2xhcmdlLXByZXZp/ZXdzLzQ3YS9iZWFj/aC13b3Jrb3V0LW1v/dGl2YXRpb24tMDQx/MC01NzA5NjcxLmpw/Zz9mbXQ" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">
+                  Click here to join and start tracking your Progress
+                </p>
+                <a href="#" class="btn btn-success">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
+  <!-- Import BOOTSTRAP JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
 </html>
