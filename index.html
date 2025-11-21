@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitTrack Lite</title>
+    <!-- Link JavaScript -->
+    <script defer src="script.js"></script>
     <!-- Link Styles Sheet -->
     <link rel="stylesheet" href="styles.css" />
     <!-- Import BOOTSTRAP Styles -->
@@ -66,7 +68,8 @@
               <a class="nav-link" href="#">User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Workout</a>
+              <!-- TODO: make drop down menu and fill with target list -->
+              <a data-equipment class="nav-link" href="#">Equipment</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Progress</a>
@@ -78,41 +81,70 @@
         </div>
       </div>
     </nav>
+    <!-- Template for workout btn  -->
+    <template data-workout-template>
+      <div class="card mb-3">
+        <img data-workout-gif src="..." class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 data-workout-Title class="card-title">Card title</h5>
+          <p data-workout-Description class="card-text">
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </p>
+        </div>
+      </div>
+    </template>
     <!-- Card area for quick workouts progress and user login -->
     <main>
-      <div id="card-box" class=" p-3 mt-2 container text-center">
-        <div class="row">
+      <div id="card-box" class="p-3 mt-2 container text-center">
+        <div data-card-grid class="row">
           <!-- Card 1 for workouts -->
           <div class="col-md-4">
             <div class="card">
-              <img src="https://imgs.search.brave.com/yHQ0gDKeFUC8UIwNnLPpca1EtQ4qeCw_-x92x_ImlTg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL2sv/a3VyaGFuL20vOTgv/NzU3MzgzMV9zdG9j/ay1waG90by1kdW1i/YmVsbC1iaWNlcHMt/d29ya291dC5qcGc" class="card-img-top" alt="..." />
+              <img
+                src="https://imgs.search.brave.com/yHQ0gDKeFUC8UIwNnLPpca1EtQ4qeCw_-x92x_ImlTg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL2sv/a3VyaGFuL20vOTgv/NzU3MzgzMV9zdG9j/ay1waG90by1kdW1i/YmVsbC1iaWNlcHMt/d29ya291dC5qcGc"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="card-body">
                 <p class="card-text">
                   Click this to bring you a quick workout session!
                 </p>
-                <a href="#" class="btn btn-success">Lets Workout!</a>
+                <button href="#" data-workout class="btn btn-success"
+                  >Lets Workout!</button
+                >
               </div>
             </div>
           </div>
           <!-- Card 2 for Progress -->
           <div class="col-md-4">
             <div class="card">
-              <img src="https://imgs.search.brave.com/bQpCzeNyjC2Tpui55ZEWSFJkh0l2fyE0svQOtIkx4-Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL20v/bWlsYW5tYXJrb3Zp/Yzc4L20vMjMvODYx/NDEwM19zdG9jay1w/aG90by1jcm9zc2Zp/dC13b3Jrb3V0Lmpw/Zw" class="card-img-top" alt="..." />
+              <img
+                src="https://imgs.search.brave.com/bQpCzeNyjC2Tpui55ZEWSFJkh0l2fyE0svQOtIkx4-Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcz/LnN0b2NrZnJlc2gu/Y29tL2ZpbGVzL20v/bWlsYW5tYXJrb3Zp/Yzc4L20vMjMvODYx/NDEwM19zdG9jay1w/aG90by1jcm9zc2Zp/dC13b3Jrb3V0Lmpw/Zw"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="card-body">
                 <p class="card-text">Click here to see your Progress!</p>
-                <a href="#" class="btn btn-success">Check Progress</a>
+                <a href="#" data-progress class="btn btn-success"
+                  >Check Progress</a
+                >
               </div>
             </div>
           </div>
           <!-- Card 3 for User log in / creation -->
           <div class="col-md-4">
             <div class="card">
-              <img src="https://imgs.search.brave.com/oqZxULyrnP5_tbGRsOt9uR8V1X5p0mcLYmJ80dJ0Slw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vaW1hZ2Vz/L2xhcmdlLXByZXZp/ZXdzLzQ3YS9iZWFj/aC13b3Jrb3V0LW1v/dGl2YXRpb24tMDQx/MC01NzA5NjcxLmpw/Zz9mbXQ" class="card-img-top" alt="..." />
+              <img
+                src="https://imgs.search.brave.com/oqZxULyrnP5_tbGRsOt9uR8V1X5p0mcLYmJ80dJ0Slw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vaW1hZ2Vz/L2xhcmdlLXByZXZp/ZXdzLzQ3YS9iZWFj/aC13b3Jrb3V0LW1v/dGl2YXRpb24tMDQx/MC01NzA5NjcxLmpw/Zz9mbXQ"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="card-body">
                 <p class="card-text">
                   Click here to join and start tracking your Progress
                 </p>
-                <a href="#" class="btn btn-success">Sign Up</a>
+                <a href="#" data-sign-up class="btn btn-success">Sign Up</a>
               </div>
             </div>
           </div>
