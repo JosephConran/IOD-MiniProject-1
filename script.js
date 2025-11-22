@@ -34,7 +34,7 @@ const workOutTemplate = document.querySelector("[data-workout-template]");
 const equipmentList = document.querySelector("[data-equipment-list]");
 
 //add event listeners
-workOutBtn.addEventListener("click", getRandomExercise);
+workOutBtn.addEventListener("click", getExercise);
 
 //Const arrays for data to be stored
 const equipList = [];
@@ -47,7 +47,7 @@ const equipList = [];
  * @returns {JSON data for exercises according to checkboxes in equipList}
  */
 
-async function getRandomExercise() {
+async function getExercise() {
   const exerciseList = [];
   const exerciseURL = `${BASE_API_URL}/exercises/search?search=body+weight`;
   try {
@@ -58,7 +58,23 @@ async function getRandomExercise() {
     const exercise = await response.json();
     exerciseList.push(...exercise.data);
     const num = randomNum(exerciseList);
-    renderExercise(exerciseList, num);
+    console.log(exerciseList);
+    fetchExercise(exerciseList, num);
+  } catch (error) {
+    console.log(`Error catching exercise list response: ${error.message}`);
+  }
+}
+
+async function fetchExercise(data, num) {
+  const exerciseID = String(data[num].exerciseId);
+  const exerciseIdURL = `${BASE_API_URL}/exercises/${exerciseID}`;
+  const exercise = []
+  console.log(data[num].exerciseId);
+  try {
+    const response = await fetch(exerciseIdURL);
+    const exerciseResp = await response.json();
+    const exerciseData = exerciseResp.data
+    renderExercise(exerciseData)
   } catch (error) {
     console.log(`Error catching exercise response: ${error.message}`);
   }
@@ -100,7 +116,7 @@ function renderList(data) {
     const li = document.createElement("li");
     const label = document.createElement("label");
     const input = document.createElement("input");
-    input.setAttribute('data-category',`${equipment.name}`)
+    input.setAttribute("data-category", `${equipment.name}`);
     label.textContent = equipment.name;
     input.className = `dropdown-item`;
     input.type = `checkbox`;
@@ -111,7 +127,7 @@ function renderList(data) {
   });
 }
 
-function renderExercise(data, num = 0) {
+async function renderExercise(data) {
   cardGrid.innerHTML = "";
 
   console.log(data);
@@ -119,12 +135,13 @@ function renderExercise(data, num = 0) {
   const card = workOutTemplate.content.cloneNode(true);
 
   //Step 2 populate card
-  card.querySelector("[data-title]").textContent = data[num].name;
+  card.querySelector("[data-title]").textContent = data.name;
 
   // card.querySelector("[data-description]").textContent = data.description;
-  card.querySelector("[data-image]").src = data[num].imageUrl;
-  card.querySelector("[data-image]").alt = data[num].name;
-
+  card.querySelector("[data-image]").src = data.imageUrl;
+  card.querySelector("[data-image]").alt = data.name;
+  card.querySelector("[data-description]").textContent= data.instructions.join()
+  
   cardGrid.appendChild(card);
 }
 
