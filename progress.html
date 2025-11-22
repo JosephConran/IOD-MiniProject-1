@@ -75,5 +75,72 @@
         </div>
       </div>
     </nav>
+    <!-- create a form to hold the data and display back -->
+    <template data-progress-template>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 data-username class="card-title">Card title</h5>
+          <h6 data-date class="card-subtitle mb-2 text-body-secondary">
+            Card subtitle
+          </h6>
+          <p data-exercise-info class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card’s content.
+          </p>
+          <p class="card-link">BMI</p>
+        </div>
+      </div>
+    </template>
+    <!-- TODO: here will be a form input that will take
+      the user name the date ask for weight and height to create BMI 
+      and save to the local server for now -->
+    <div class="container">
+      <div class="mb-3">
+        <label for="usernameInput" class="form-label">Username</label>
+        <input
+          data-username
+          type="text"
+          class="form-control"
+          id="usernameInput"
+          placeholder="Name"
+        />
+      </div>
+      <label for="weightInput" class="form-label">BMI calculator</label>
+      <div class="input-group mb-3">
+        <input
+          data-weight
+          type="number"
+          class="form-control"
+          id="weightInput"
+          placeholder="weight"
+        />
+        <span class="input-group-text">lbs</span>
+        <input
+          data-feet
+          type="number"
+          class="form-control"
+          id="heightInput"
+          placeholder="ft"
+        />
+        <span class="input-group-text">'</span>
+        <input
+          data-inches
+          type="number"
+          class="form-control"
+          id="heightInput"
+          placeholder="in"
+        />
+        <span class="input-group-text">''</span>
+      </div>
+      <div class="mb-3">
+        <label for="workoutText" class="form-label"
+          >List the exercises you completed and how long</label
+        >
+        <textarea class="form-control" id="workoutText" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button class="btn btn-primary" type="button">Create Log</button>
+    </div>
   </body>
 </html>
