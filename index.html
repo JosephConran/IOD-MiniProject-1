@@ -67,9 +67,19 @@
             <li class="nav-item">
               <a class="nav-link" href="#">User</a>
             </li>
-            <li class="nav-item">
-              <!-- TODO: make drop down menu and fill with target list -->
-              <a data-equipment class="nav-link" href="#">Equipment</a>
+            <li class="nav-item dropdown">
+              <button
+                type="button"
+                class="btn dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-bs-auto-close="outside"
+              >
+                Equipment
+              </button>
+              <ul data-equipment-list class="dropdown-menu">
+                <!-- in here is where we append the equipment list from the api -->
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Progress</a>
@@ -84,10 +94,10 @@
     <!-- Template for workout btn  -->
     <template data-workout-template>
       <div class="card mb-3">
-        <img data-workout-gif src="..." class="card-img-top" alt="..." />
+        <img data-image src="..." class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 data-workout-Title class="card-title">Card title</h5>
-          <p data-workout-Description class="card-text">
+          <h5 data-title class="card-title">Card title</h5>
+          <p data-description class="card-text">
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This content is a little bit longer.
           </p>
@@ -110,9 +120,9 @@
                 <p class="card-text">
                   Click this to bring you a quick workout session!
                 </p>
-                <button href="#" data-workout class="btn btn-success"
-                  >Lets Workout!</button
-                >
+                <button href="#" data-workout class="btn btn-success">
+                  Lets Workout!
+                </button>
               </div>
             </div>
           </div>
