@@ -39,7 +39,6 @@ workOutBtn.addEventListener("click", getRandomExercise);
 //Const arrays for data to be stored
 const equipList = [];
 
-
 //GET METHODS
 
 /**
@@ -58,12 +57,12 @@ async function getRandomExercise() {
     }
     const exercise = await response.json();
     exerciseList.push(...exercise.data);
-    renderExercise(exerciseList);
+    const num = randomNum(exerciseList);
+    renderExercise(exerciseList, num);
   } catch (error) {
     console.log(`Error catching exercise response: ${error.message}`);
   }
 }
-
 
 /**
  * @method getEquipmentList will pull the equipment list for the drop down menu
@@ -95,35 +94,45 @@ async function getEquipData() {
 
 function renderList(data) {
   console.log(data);
-  equipmentList.innerHTML = `<a class="dropdown-item" href"#" data-category="all">All Equipment</a>`;
-
+  equipmentList.innerHTML = `<input class="dropdown-item" type="checkbox" value="all" data-category="all">
+                              <label>All Equipment</label>`;
   data.forEach((equipment) => {
     const li = document.createElement("li");
     const label = document.createElement("label");
     const input = document.createElement("input");
-    label.for = equipment.name;
+    input.setAttribute('data-category',`${equipment.name}`)
+    label.textContent = equipment.name;
     input.className = `dropdown-item`;
     input.type = `checkbox`;
     input.value = equipment.name;
-    input.dataset.category = equipment.name;
-    label.textContent = equipment.name;
+    input.name = equipment.name;
     li.append(input, label);
     equipmentList.appendChild(li);
   });
 }
 
-function renderExercise(data){
-    console.log(data)
-    //Step 1 clone card
-    const card = workOutTemplate.content.cloneNode(true);
+function renderExercise(data, num = 0) {
+  cardGrid.innerHTML = "";
 
-    //Step 2 populate card
+  console.log(data);
+  //Step 1 clone card
+  const card = workOutTemplate.content.cloneNode(true);
 
+  //Step 2 populate card
+  card.querySelector("[data-title]").textContent = data[num].name;
 
+  // card.querySelector("[data-description]").textContent = data.description;
+  card.querySelector("[data-image]").src = data[num].imageUrl;
+  card.querySelector("[data-image]").alt = data[num].name;
+
+  cardGrid.appendChild(card);
 }
 
+// Other Methods
 
-
+function randomNum(arr) {
+  return Math.floor(Math.random() * arr.length) + 1;
+}
 
 // Initialize APP
 
