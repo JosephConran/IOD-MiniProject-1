@@ -1,0 +1,13 @@
+#nav-bar{
+    background: linear-gradient(180deg,rgba(255, 255, 255, 1) 58%, rgba(90, 217, 0, 1) 100%);
+}
+
+
+
+.title{
+    background: blue;
+}
+
+.whoWeAre > h3{
+    color: blue
+}
