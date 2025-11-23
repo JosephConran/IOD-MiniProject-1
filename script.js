@@ -146,7 +146,6 @@ function renderList(data) {
     input.value = equipment.name;
     input.name = equipment.name;
     li.append(input, label);
-    equipmentList.appendChild(li);
   });
   const equipChecks = document.querySelectorAll("[data-category]");
   equipChecks.forEach((box) => {
@@ -170,8 +169,11 @@ async function renderExercise(data) {
   card.querySelector("[data-image]").alt = data.name;
   card.querySelector("[data-description]").textContent =
     data.instructions.join();
-
-  cardGrid.appendChild(card);
+  // create wrapper for reactive design
+  const wrapper = document.createElement("div");
+  wrapper.className = "col-12";
+  wrapper.appendChild(card);
+  cardGrid.appendChild(wrapper);
 }
 
 // Other Methods
