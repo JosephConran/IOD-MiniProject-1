@@ -76,7 +76,9 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="progress.html">Progress</a>
@@ -103,7 +105,7 @@
     </template>
     <!-- Card area for quick workouts progress and user login -->
     <main>
-      <div id="card-box" class="p-3 mt-2 container text-center">
+      <div id="card-box" class="p-3 mt-2 container text-center justify-content-center">
         <div data-card-grid class="row">
           <!-- Card 1 for workouts -->
           <div class="col-md-4">
@@ -158,6 +160,10 @@
         </div>
       </div>
     </main>
+    <div class="d-flex justify-content-center my-3">
+  <button id="next-exercise" class="btn btn-success d-none me-2">Get Another Exercise</button>
+  <button id="reset-btn" class="btn btn-success d-none">Back to Homepage</button>
+</div>
   </body>
   <!-- Import BOOTSTRAP JS -->
   <script
