@@ -68,13 +68,13 @@ async function getExercise() {
 async function fetchExercise(data, num) {
   const exerciseID = String(data[num].exerciseId);
   const exerciseIdURL = `${BASE_API_URL}/exercises/${exerciseID}`;
-  const exercise = []
+  const exercise = [];
   console.log(data[num].exerciseId);
   try {
     const response = await fetch(exerciseIdURL);
     const exerciseResp = await response.json();
-    const exerciseData = exerciseResp.data
-    renderExercise(exerciseData)
+    const exerciseData = exerciseResp.data;
+    renderExercise(exerciseData);
   } catch (error) {
     console.log(`Error catching exercise response: ${error.message}`);
   }
@@ -109,19 +109,32 @@ async function getEquipData() {
  */
 
 function renderList(data) {
-  console.log(data);
-  equipmentList.innerHTML = `<input class="dropdown-item" type="checkbox" value="all" data-category="all">
-                              <label>All Equipment</label>`;
+   const li = document.createElement("li");
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.setAttribute("data-category", `ALL`);
+    label.htmlFor = `AlL`
+    label.className = `dropdown-item btn btn-outline-primary`
+    label.textContent = `ALL`
+    input.className = `dropdown-item btn-check`;
+    input.type = `checkbox`;
+    input.value = `ALL`
+    input.id = `ALL`
+    li.append(input, label);
+    equipmentList.appendChild(li);
+  
   data.forEach((equipment) => {
     const li = document.createElement("li");
     const label = document.createElement("label");
     const input = document.createElement("input");
     input.setAttribute("data-category", `${equipment.name}`);
+    label.htmlFor = equipment.name
+    label.className = `dropdown-item btn btn-outline-primary`
     label.textContent = equipment.name;
-    input.className = `dropdown-item`;
+    input.className = `dropdown-item btn-check`;
     input.type = `checkbox`;
     input.value = equipment.name;
-    input.name = equipment.name;
+    input.id = equipment.name;
     li.append(input, label);
     equipmentList.appendChild(li);
   });
@@ -140,8 +153,9 @@ async function renderExercise(data) {
   // card.querySelector("[data-description]").textContent = data.description;
   card.querySelector("[data-image]").src = data.imageUrl;
   card.querySelector("[data-image]").alt = data.name;
-  card.querySelector("[data-description]").textContent= data.instructions.join()
-  
+  card.querySelector("[data-description]").textContent =
+    data.instructions.join();
+
   cardGrid.appendChild(card);
 }
 
