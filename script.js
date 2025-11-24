@@ -27,15 +27,28 @@ const nextExerciseBtn = document.getElementById("next-exercise");
 const resetBtn = document.getElementById("reset-btn");
 
 //add event listeners
-workOutBtn.addEventListener("click", getExercise);
+
+
+// workOutBtn.addEventListener("click", getExercise);
+
+nextExerciseBtn.addEventListener("click", getExercise);
+
+// turn buttons on and off for reset and next exercise 
+
 workOutBtn.addEventListener("click", () => {
-  // Render cards
+  getExercise()
   nextExerciseBtn.classList.remove("d-none");
   resetBtn.classList.remove("d-none");
 });
-nextExerciseBtn.addEventListener("click", getExercise);
+
+
+
+
+
+
 resetBtn.addEventListener("click", () => {
   cardGrid.innerHTML = ""; // clear cards
+  render
   nextExerciseBtn.classList.add("d-none");
   resetBtn.classList.add("d-none");
 });
@@ -146,6 +159,7 @@ function renderList(data) {
     input.value = equipment.name;
     input.name = equipment.name;
     li.append(input, label);
+    equipmentList.append(li)
   });
   const equipChecks = document.querySelectorAll("[data-category]");
   equipChecks.forEach((box) => {
