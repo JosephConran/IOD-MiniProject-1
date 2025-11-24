@@ -25,7 +25,8 @@ const workOutTemplate = document.querySelector("[data-workout-template]");
 const equipmentList = document.querySelector("[data-equipment-list]");
 const nextExerciseBtn = document.getElementById("next-exercise");
 const resetBtn = document.getElementById("reset-btn");
-
+const progCard = document.querySelector("[data-progress-card]")
+const wrkCard = document.querySelector("[data-workout]")
 //add event listeners
 
 
@@ -48,7 +49,8 @@ workOutBtn.addEventListener("click", () => {
 
 resetBtn.addEventListener("click", () => {
   cardGrid.innerHTML = ""; // clear cards
-  render
+  cardGrid.append(wrkCard,progCard)
+  
   nextExerciseBtn.classList.add("d-none");
   resetBtn.classList.add("d-none");
 });
