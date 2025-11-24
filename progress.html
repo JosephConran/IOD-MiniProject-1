@@ -83,20 +83,11 @@
           <h6 data-username class="card-subtitle mb-2 text-body-secondary">
             username
           </h6>
-          <ul data-exercise-info class="card-text">
-            <li>Exercise 1-<span>30min</span></li>
-            <li>Exercise 1-<span>30min</span></li>
-            <li>Exercise 1-<span>30min</span></li>
-            <li>Exercise 1-<span>30min</span></li>
-            <li>Exercise 1-<span>30min</span></li>
-          </ul>
-          <p class="card-link">BMI</p>
+          <ul data-exercise-info class="card-text"></ul>
+          <p data-BMI class="card-link">BMI</p>
         </div>
       </div>
     </template>
-    <!-- TODO: here will be a form input that will take
-      the user name the date ask for weight and height to create BMI 
-      and save to the local server for now -->
     <div class="container mt-3">
       <div data-card-grid class="row g-2">
         <!-- append cards built with form to here -->
@@ -127,7 +118,7 @@
           data-feet
           type="number"
           class="form-control"
-          id="heightInput"
+          id="heightFeetInput"
           placeholder="ft"
         />
         <span class="input-group-text">'</span>
@@ -135,7 +126,7 @@
           data-inches
           type="number"
           class="form-control"
-          id="heightInput"
+          id="heightInchesInput"
           placeholder="in"
         />
         <span class="input-group-text">''</span>
@@ -148,7 +139,14 @@
       </div>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
-      <button class="btn btn-primary" type="button">Create Log</button>
+      <button id="createLogBtn" class="btn btn-primary" type="button">
+        Create Log
+      </button>
     </div>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
 </html>
