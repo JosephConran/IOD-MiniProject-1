@@ -145,19 +145,32 @@ async function getEquipData() {
  */
 
 function renderList(data) {
-  console.log(data);
-  equipmentList.innerHTML = `<li><input class="dropdown-item" type="checkbox" value="all" data-category="all">
-  <label>All Equipment</label><li>`;
+   const li = document.createElement("li");
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.setAttribute("data-category", `ALL`);
+    label.htmlFor = `AlL`
+    label.className = `dropdown-item btn btn-outline-primary`
+    label.textContent = `ALL`
+    input.className = `dropdown-item btn-check`;
+    input.type = `checkbox`;
+    input.value = `ALL`
+    input.id = `ALL`
+    li.append(input, label);
+    equipmentList.appendChild(li);
+  
   data.forEach((equipment) => {
     const li = document.createElement("li");
     const label = document.createElement("label");
     const input = document.createElement("input");
-    input.setAttribute(`data-category`, `${equipment.name}`);
+    input.setAttribute("data-category", `${equipment.name}`);
+    label.htmlFor = equipment.name
+    label.className = `dropdown-item btn btn-outline-primary`
     label.textContent = equipment.name;
-    input.className = `dropdown-item`;
+    input.className = `dropdown-item btn-check`;
     input.type = `checkbox`;
     input.value = equipment.name;
-    input.name = equipment.name;
+    input.id = equipment.name;
     li.append(input, label);
     equipmentList.append(li)
   });
